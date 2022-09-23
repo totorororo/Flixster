@@ -20,9 +20,10 @@ Here's a walkthrough of implemented user stories:
 
 <img src='https://github.com/totorororo/Flixster/blob/master/flixster%20walkthrough.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 GIF created with [LiceCap](http://www.cockos.com/licecap/).  
+
 ## Notes
 
-Describe any challenges encountered while building the app.
+Connecting through API and showing data in recycler view
 
 ## License
 
