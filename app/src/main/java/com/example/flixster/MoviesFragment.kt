@@ -1,5 +1,6 @@
 package com.example.flixster
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -21,7 +22,9 @@ import org.json.JSONObject
 
 private const val API_KEY = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
 
-class MoviesFragment : Fragment(), OnListFragmentInteractionListener {
+class MoviesFragment (context: Context): Fragment(), OnListFragmentInteractionListener {
+
+    private val contextView = context;
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,7 +33,7 @@ class MoviesFragment : Fragment(), OnListFragmentInteractionListener {
         val view = inflater.inflate(R.layout.movies_list, container, false)
         val progressBar = view.findViewById<View>(R.id.progress) as ContentLoadingProgressBar
         val recyclerView = view.findViewById<View>(R.id.list) as RecyclerView
-        val context = view.context
+        val context  = view.context
         recyclerView.layoutManager = GridLayoutManager(context, 1)
         updateAdapter(progressBar, recyclerView)
         return view
@@ -46,7 +49,7 @@ class MoviesFragment : Fragment(), OnListFragmentInteractionListener {
 
         // Using the client, perform the HTTP request
         client[
-                "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US&page=1",
+                "https://api.themoviedb.org/3/movie/top_rated?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US&page=1",
                 params,
                 object : JsonHttpResponseHandler()
                 { //connect these callbacks to your API call
@@ -70,7 +73,7 @@ class MoviesFragment : Fragment(), OnListFragmentInteractionListener {
                         val arrayMovieType = object : TypeToken<List<Movies>>() {}.type
 
                         val models : List<Movies> = gson.fromJson(moviesRawJSON, arrayMovieType)
-                        recyclerView.adapter = MovieRecyclerViewAdapter(models, this@MoviesFragment)
+                        recyclerView.adapter = MovieRecyclerViewAdapter(contextView, models, this@MoviesFragment)
 
                         // Look for this in Logcat:
                         Log.d("MoviesFragment", "response successful")
