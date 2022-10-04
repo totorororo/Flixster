@@ -24,12 +24,12 @@ class DetailMovie : AppCompatActivity() {
         val movie = intent.getSerializableExtra(MOVIE_EXTRA) as Movies
 
         // TODO: Set the title, byline, and abstract information from the article
-        titleTextView.text = movie.title
-        abstractTextView.text = movie.description
+        titleTextView.text = movie.headline?.main
+        abstractTextView.text = movie.abstract
 
         // TODO: Load the media image
         Glide.with(this)
-            .load(movie.movieImageUrl)
+            .load(movie.mediaImageUrl)
             .into(mediaImageView)
     }
 }

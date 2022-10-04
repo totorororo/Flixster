@@ -6,7 +6,7 @@
     tools:context=".MainActivity">
 
     <FrameLayout
-        android:id="@+id/content"
+        android:id="@+id/movie"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

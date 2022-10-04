@@ -14,8 +14,7 @@ import com.example.flixster.R.id
 const val MOVIE_EXTRA = "MOVIE_EXTRA"
 private const val TAG = "MovieAdapter"
 
-class MovieRecyclerViewAdapter (private val context: Context, private val movies: List<Movies>,
-                                private val mListener: OnListFragmentInteractionListener?)
+class MovieRecyclerViewAdapter (private val context: Context, private val movies: List<Movies>)
     : RecyclerView.Adapter<MovieRecyclerViewAdapter.MovieViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
@@ -41,7 +40,7 @@ class MovieRecyclerViewAdapter (private val context: Context, private val movies
             val movie = movies[adapterPosition]
             // TODO: Navigate to Details screen and pass selected article
             val intent = Intent(context, DetailMovie::class.java)
-            //intent.putExtra(MOVIE_EXTRA, movie)
+            intent.putExtra(MOVIE_EXTRA, movie)
             context.startActivity(intent)
         }
         override fun toString(): String {
@@ -52,11 +51,11 @@ class MovieRecyclerViewAdapter (private val context: Context, private val movies
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         val movie = movies[position]
 
-        holder.mMovieTitle.text = movie.title
-        holder.mMovieDescription.text = movie.description
+        holder.mMovieTitle.text = movie.headline?.main
+        holder.mMovieDescription.text = movie.abstract
 
         Glide.with(context)
-            .load("https://image.tmdb.org/t/p/w500" + movie.movieImageUrl)
+            .load("https://image.tmdb.org/t/p/w500" + movie.mediaImageUrl)
             .centerInside()
             .into(holder.mMovieImage)
     }
