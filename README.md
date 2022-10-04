@@ -1,8 +1,8 @@
-# Android Project 3 - *Flixster*
+# Android Project 4 - *Flixster*
 
 Submitted by: **totorororo**
 
-**Flixster** is a movie browsing app that allows users to browse movies currently playing in theaters.
+**Flixster** is a movie browsing app that allows users to browse popular movies.
 
 Time spent: **8** hours spent in total
 
@@ -10,8 +10,9 @@ Time spent: **8** hours spent in total
 
 The following **required** functionality is completed:
 
-- [✔️ ] **Make a request to [The Movie Database API's `now_playing`](https://developers.themoviedb.org/3/movies/get-now-playing) endpoint to get a list of current movies**
-- [✔️ ] **Parse through JSON data and implement a RecyclerView to display all movies**
+- [✔️ ] *Choose any endpoint on The MovieDB API except `now_playing`**
+  - Chosen Endpoint: `Popular`
+- [✔️ ] **Make a request to your chosen endpoint and implement a RecyclerView to display all entries**
 - [✔️ ] **Use Glide to load and display movie poster images**
 
 ## Video Walkthrough
